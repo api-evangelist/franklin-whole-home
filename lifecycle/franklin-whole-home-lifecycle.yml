@@ -1,0 +1,43 @@
+generated: '2026-08-16'
+method: searched
+source: https://api.franklinwh.com/ (API portal), https://www.franklinwh.com/blog/introducing-the-franklinwh-api,
+  live host probes
+versioning:
+  scheme: none-in-path
+  current: '1.0'
+  evidence: The API portal declares version 1.0; paths carry a namespace (/api-common/, /api-sunrun/) but no version
+    segment, and no version header is documented.
+  docs: https://api.franklinwh.com/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No deprecation or sunset policy is published. Probed /changelog and the blog; nothing found.
+sla:
+  url: null
+  uptime_target: null
+  note: No API SLA published.
+status_page: null
+status_page_note: status.franklinwh.com does not resolve; no status or uptime page found on www.franklinwh.com.
+  No StatusPage pointer emitted.
+changelog: null
+changelog_note: No dated API changelog. /changelog returns 404 on www.franklinwh.com and the portal publishes no
+  release notes.
+environments:
+- name: test
+  base_url: https://test-api.franklinwh.com
+  published: true
+  note: The only base URL FranklinWH publishes publicly.
+- name: production
+  base_url: null
+  published: false
+  note: Production base URL is issued to authorised partners during onboarding; not published.
+deprecated_operations: []
+namespaces:
+- prefix: /api-common/
+  label: Standard API
+  operations: 31
+- prefix: /api-sunrun/
+  label: Sunrun API
+  operations: 7
+  note: Partner-specific namespace serving Sunrun; overlaps the standard namespace (setSwitchParam, queryApowerSwitchStatus)
+    with different methods and payloads.

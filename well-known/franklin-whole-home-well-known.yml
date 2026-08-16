@@ -1,0 +1,122 @@
+generated: '2026-08-16'
+method: probed
+source: live probes of https://www.franklinwh.com, https://test-api.franklinwh.com and https://api.franklinwh.com
+hosts:
+- https://www.franklinwh.com
+- https://test-api.franklinwh.com
+- https://api.franklinwh.com
+result: none
+note: FranklinWH serves no /.well-known/ discovery documents and no llms.txt. The marketing site and the test API
+  host return real 404s. The API portal host api.franklinwh.com is a single-page app whose catch-all returns HTTP
+  200 with an identical 2,352-byte HTML shell for EVERY path probed, including /.well-known/agent-card.json - this
+  is an SPA false positive, not a served document, and no WellKnown, SecurityTxt or AgentCard pointer is emitted.
+  Recorded absence, not an untested surface.
+documents:
+- host: https://www.franklinwh.com
+  path: /.well-known/security.txt
+  status: 404
+  note: empty body
+- host: https://www.franklinwh.com
+  path: /.well-known/openid-configuration
+  status: 404
+  note: site 404 HTML page
+- host: https://www.franklinwh.com
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  note: site 404 HTML page
+- host: https://www.franklinwh.com
+  path: /.well-known/oauth-protected-resource
+  status: 404
+  note: site 404 HTML page
+- host: https://www.franklinwh.com
+  path: /.well-known/api-catalog
+  status: 404
+  note: site 404 HTML page
+- host: https://www.franklinwh.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+  note: empty JSON object
+- host: https://www.franklinwh.com
+  path: /.well-known/agent-card.json
+  status: 404
+  note: empty JSON object
+- host: https://www.franklinwh.com
+  path: /.well-known/agent.json
+  status: 404
+  note: empty JSON object
+- host: https://www.franklinwh.com
+  path: /llms.txt
+  status: 404
+  note: empty body
+- host: https://test-api.franklinwh.com
+  path: /.well-known/security.txt
+  status: 404
+  note: JSON 404 envelope
+- host: https://test-api.franklinwh.com
+  path: /.well-known/openid-configuration
+  status: 404
+  note: JSON 404 envelope
+- host: https://test-api.franklinwh.com
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  note: JSON 404 envelope
+- host: https://test-api.franklinwh.com
+  path: /.well-known/oauth-protected-resource
+  status: 404
+  note: JSON 404 envelope
+- host: https://test-api.franklinwh.com
+  path: /.well-known/api-catalog
+  status: 404
+  note: JSON 404 envelope
+- host: https://test-api.franklinwh.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+  note: JSON 404 envelope
+- host: https://test-api.franklinwh.com
+  path: /.well-known/agent-card.json
+  status: 404
+  note: JSON 404 envelope
+- host: https://test-api.franklinwh.com
+  path: /.well-known/agent.json
+  status: 404
+  note: JSON 404 envelope
+- host: https://test-api.franklinwh.com
+  path: /llms.txt
+  status: 404
+  note: JSON 404 envelope
+- host: https://api.franklinwh.com
+  path: /.well-known/security.txt
+  status: 200
+  note: 'SPA catch-all: identical 2,352-byte HTML shell returned for every path - NOT a document'
+- host: https://api.franklinwh.com
+  path: /.well-known/openid-configuration
+  status: 200
+  note: SPA catch-all HTML shell - NOT a document
+- host: https://api.franklinwh.com
+  path: /.well-known/oauth-authorization-server
+  status: 200
+  note: SPA catch-all HTML shell - NOT a document
+- host: https://api.franklinwh.com
+  path: /.well-known/oauth-protected-resource
+  status: 200
+  note: SPA catch-all HTML shell - NOT a document
+- host: https://api.franklinwh.com
+  path: /.well-known/api-catalog
+  status: 200
+  note: SPA catch-all HTML shell - NOT a document
+- host: https://api.franklinwh.com
+  path: /.well-known/ai-plugin.json
+  status: 200
+  note: SPA catch-all HTML shell - NOT a document
+- host: https://api.franklinwh.com
+  path: /.well-known/agent-card.json
+  status: 200
+  note: SPA catch-all HTML shell - NOT a document
+- host: https://api.franklinwh.com
+  path: /.well-known/agent.json
+  status: 200
+  note: SPA catch-all HTML shell - NOT a document
+- host: https://api.franklinwh.com
+  path: /llms.txt
+  status: 200
+  note: SPA catch-all HTML shell - NOT a document

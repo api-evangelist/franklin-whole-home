@@ -1,0 +1,153 @@
+generated: '2026-08-16'
+method: derived
+source: openapi/franklin-whole-home-openapi.yml (id-reference fields across 38 operations)
+note: FranklinWH publishes no response payload schemas, so this graph is derived from the identifier fields that
+  appear as request parameters across the operation catalogue. Entities and relationships are real; field-level
+  attributes beyond the identifiers are not published and are not invented here.
+entities:
+- name: Installer
+  id_field: installerId
+  id_type: Integer
+  description: The partner organisation that owns a set of sites. Scopes querySiteList and group creation.
+  operations:
+  - querySiteList
+  - createGroup
+  - modifyGroups
+- name: Site
+  id_field: siteId
+  id_type: Integer
+  description: A physical installation address with location, postcode and a user account.
+  operations:
+  - querySiteInfo
+  - querySiteList
+  - modifySite
+  - preCreatedSite
+  - queryComponentsAssets
+  - setEnergyManagementParameters
+  - queryEnergyManagParams
+  - sunrunSetSwitchParam
+  - sunrunQueryApowerSwitchStatus
+- name: Device
+  id_field: deviceId
+  id_type: String
+  description: 'An aGate / aPower unit at a site. Example identifier form published in the TOU request example:
+    a 20-character alphanumeric serial.'
+  operations:
+  - queryDeviceList
+  - editDeviceInfo
+  - queryDeviceParameters
+  - queryDeviceRunningStatus
+  - queryPowerData
+  - getMaxPowerData
+  - queryEnergyData
+  - queryPowerSourceDetails
+  - queryDeviceDataPool
+  - queryInventory
+  - historyDataLoad
+  - queryDeviceHistoricalWarning
+  - queryBackupEvents
+  - setTouProfile
+  - queryTouProfile
+  - setSwitchParam
+  - queryApowerSwitchStatus
+  - setSmartCircuits
+  - querySmartCircuitParameters
+  - setGridEvents
+  - queryGridEvents
+- name: Group
+  id_field: groupId
+  id_type: Integer
+  alt_key: groupName
+  description: A named collection of devices used to apply settings in bulk. Either groupId or groupName identifies
+    it.
+  operations:
+  - createGroup
+  - modifyGroups
+  - manageGroupsDevices
+  - setDevicesByGroup
+  - listGroupDevices
+- name: TouProfile
+  id_field: touId
+  id_type: Integer
+  description: 'A time-of-use tariff profile: seasons, day types and per-period wave types and schedules.'
+  operations:
+  - setTouProfile
+  - queryTouProfile
+- name: SmartCircuit
+  id_field: sw1..sw3
+  id_type: ordinal
+  description: Up to three controllable load circuits per device, each with a name, mode, SOC shed threshold and
+    timing plan. Circuits 1 and 2 can be merged.
+  operations:
+  - setSmartCircuits
+  - querySmartCircuitParameters
+- name: GridEvent
+  id_field: id
+  id_type: Integer
+  description: A scheduled grid interaction (start, end, power, reserve SOC, feed-in flag) applied to a device.
+  operations:
+  - setGridEvents
+  - queryGridEvents
+- name: Warning
+  id_field: null
+  id_type: null
+  description: A historical device warning record.
+  operations:
+  - queryDeviceHistoricalWarning
+- name: BackupEvent
+  id_field: null
+  id_type: null
+  description: A recorded grid-outage / backup event for a device.
+  operations:
+  - queryBackupEvents
+- name: OperationLog
+  id_field: optRecordsType
+  id_type: Integer
+  description: Audit record of a setting change, typed by the operation that produced it (11 record types published).
+  operations:
+  - fetchOperationLog
+relationships:
+- from: Installer
+  to: Site
+  type: has_many
+  via: installerId
+- from: Site
+  to: Device
+  type: has_many
+  via: siteId
+- from: Device
+  to: TouProfile
+  type: has_one
+  via: deviceId
+- from: Device
+  to: SmartCircuit
+  type: has_many
+  via: deviceId
+- from: Device
+  to: GridEvent
+  type: has_many
+  via: deviceId
+- from: Device
+  to: Warning
+  type: has_many
+  via: deviceId
+- from: Device
+  to: BackupEvent
+  type: has_many
+  via: deviceId
+- from: Group
+  to: Device
+  type: has_many
+  via: deviceIds
+- from: Installer
+  to: Group
+  type: has_many
+  via: installerId
+- from: OperationLog
+  to: Device
+  type: belongs_to
+  via: deviceId
+- from: OperationLog
+  to: Site
+  type: belongs_to
+  via: siteId

@@ -1,0 +1,32 @@
+generated: '2026-08-16'
+method: searched
+source: https://www.franklinwh.com/blog/introducing-the-franklinwh-api + https://api.franklinwh.com/
+published: true
+test_environment:
+  base_url: https://test-api.franklinwh.com
+  cost: free
+  note: FranklinWH states the test environment keeps data formats consistent with production so partners can exercise
+    requests, responses and workflows without touching live data or devices.
+live_vs_test:
+  separation: separate host
+  production_base_url: null
+  note: Test traffic is separated by host rather than by key prefix or mode flag. The production base URL is issued
+    during partner onboarding and is not published.
+browser_console:
+  available: true
+  url: https://api.franklinwh.com/
+  note: The API portal ships a built-in per-operation debug console ("API debugging tools") that issues live requests
+    against the test host from the browser, with no local tooling required. The console itself is behind a portal
+    login; the operation catalogue it renders is served publicly.
+credentials:
+  model: cp / ck credential pair exchanged for a token at POST /api-common/tokenizer
+  onboarding: FleetView single sign-on - installers sign in with their existing FleetView account (https://energy.franklinwh.com/)
+    and the portal applies the associated device scope.
+  note: The portal pre-fills demo cp/ck values in the debug console. Those values are deliberately not recorded
+    here.
+magic_values: []
+magic_values_note: No published test device IDs, magic identifiers, fixture triggers or time-simulation tooling.
+  The one concrete sample identifier that appears in the catalogue is a device ID inside the Set TOU Profile request
+  example, which is carried verbatim in the OpenAPI.
+time_simulation:
+  supported: false

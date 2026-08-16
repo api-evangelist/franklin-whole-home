@@ -1,0 +1,132 @@
+generated: '2026-08-16'
+method: derived
+status: candidate
+source: openapi/franklin-whole-home-openapi.yml
+deployment:
+  mode: none
+  auth: api-key
+  verified: searched
+  note: No MCP server exists. Searched the FranklinWH site, the API portal at api.franklinwh.com, the blog announcement
+    of the FranklinWH API, npm and the FranklinWH GitHub organisation - FranklinWH ships neither a hosted/remote
+    MCP endpoint nor a stdio package. No endpoint URL was guessed. The tools below are a CANDIDATE derivation from
+    the published operation catalogue, not a shipped agent surface.
+server:
+  name: franklinwh
+  transport: null
+  url: null
+tool_count: 38
+tools:
+- name: tokenizer
+  description: Fetch token by using CK CP
+  source_operation: openapi/franklin-whole-home-openapi.yml#tokenizer
+- name: querySiteInfo
+  description: Query site information according to the site ID
+  source_operation: openapi/franklin-whole-home-openapi.yml#querySiteInfo
+- name: querySiteList
+  description: Get all site information, or the site information of its installers
+  source_operation: openapi/franklin-whole-home-openapi.yml#querySiteList
+- name: modifySite
+  description: Modify or delete a site
+  source_operation: openapi/franklin-whole-home-openapi.yml#modifySite
+- name: queryDeviceList
+  description: Get device list information
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryDeviceList
+- name: editDeviceInfo
+  description: Edit Deivce Information
+  source_operation: openapi/franklin-whole-home-openapi.yml#editDeviceInfo
+- name: queryDeviceParameters
+  description: Query device parameters
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryDeviceParameters
+- name: queryDeviceRunningStatus
+  description: Query device running status
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryDeviceRunningStatus
+- name: queryPowerData
+  description: Get the latest data of the day or query all data on a specific date
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryPowerData
+- name: getMaxPowerData
+  description: Query the maximum power within defined periods
+  source_operation: openapi/franklin-whole-home-openapi.yml#getMaxPowerData
+- name: queryEnergyData
+  description: Get the latest data or all energy data within defined periods
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryEnergyData
+- name: queryPowerSourceDetails
+  description: Get the latest data about FHP, grid, and solar, or the data on a specific date
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryPowerSourceDetails
+- name: queryDeviceDataPool
+  description: Query Telemetry Grouping
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryDeviceDataPool
+- name: queryInventory
+  description: Query Inventory
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryInventory
+- name: historyDataLoad
+  description: Query Historical Data Load, this API offers total 7 days  running history data ( 5 min. Period )
+  source_operation: openapi/franklin-whole-home-openapi.yml#historyDataLoad
+- name: queryDeviceHistoricalWarning
+  description: Query historical warning data within a defined period, the time span should not exceed 1 month
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryDeviceHistoricalWarning
+- name: queryBackupEvents
+  description: Query backup events data within a defined period, the time span should not exceed 1 month
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryBackupEvents
+- name: setTouProfile
+  description: Set energy TOU profile
+  source_operation: openapi/franklin-whole-home-openapi.yml#setTouProfile
+- name: queryTouProfile
+  description: Query energy TOU profile
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryTouProfile
+- name: setSwitchParam
+  description: Set aPower Switch
+  source_operation: openapi/franklin-whole-home-openapi.yml#setSwitchParam
+- name: queryApowerSwitchStatus
+  description: Query aPower Switch Status
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryApowerSwitchStatus
+- name: setSmartCircuits
+  description: Set smart circuits
+  source_operation: openapi/franklin-whole-home-openapi.yml#setSmartCircuits
+- name: querySmartCircuitParameters
+  description: Query smart circuit parameters
+  source_operation: openapi/franklin-whole-home-openapi.yml#querySmartCircuitParameters
+- name: setGridEvents
+  description: Grid event settings
+  source_operation: openapi/franklin-whole-home-openapi.yml#setGridEvents
+- name: queryGridEvents
+  description: Query Grid Events
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryGridEvents
+- name: createGroup
+  description: Could create groups
+  source_operation: openapi/franklin-whole-home-openapi.yml#createGroup
+- name: modifyGroups
+  description: Modify group parameters
+  source_operation: openapi/franklin-whole-home-openapi.yml#modifyGroups
+- name: manageGroupsDevices
+  description: Add or delete devices in a group
+  source_operation: openapi/franklin-whole-home-openapi.yml#manageGroupsDevices
+- name: setDevicesByGroup
+  description: Set devices by group
+  source_operation: openapi/franklin-whole-home-openapi.yml#setDevicesByGroup
+- name: listGroupDevices
+  description: List Group devices
+  source_operation: openapi/franklin-whole-home-openapi.yml#listGroupDevices
+- name: fetchOperationLog
+  description: Query modification records, the time span should not exceed 1 month
+  source_operation: openapi/franklin-whole-home-openapi.yml#fetchOperationLog
+- name: preCreatedSite
+  description: Receive Sunrun Pre Created Site information
+  source_operation: openapi/franklin-whole-home-openapi.yml#preCreatedSite
+- name: backFillData
+  description: Get SiteId BackFill Information
+  source_operation: openapi/franklin-whole-home-openapi.yml#backFillData
+- name: queryComponentsAssets
+  description: Query all site assets of sunrun by paging
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryComponentsAssets
+- name: setEnergyManagementParameters
+  description: Set energy management parameters
+  source_operation: openapi/franklin-whole-home-openapi.yml#setEnergyManagementParameters
+- name: queryEnergyManagParams
+  description: Query energy management parameters
+  source_operation: openapi/franklin-whole-home-openapi.yml#queryEnergyManagParams
+- name: sunrunSetSwitchParam
+  description: Set aPower Switch
+  source_operation: openapi/franklin-whole-home-openapi.yml#sunrunSetSwitchParam
+- name: sunrunQueryApowerSwitchStatus
+  description: Query aPower Switch Status
+  source_operation: openapi/franklin-whole-home-openapi.yml#sunrunQueryApowerSwitchStatus

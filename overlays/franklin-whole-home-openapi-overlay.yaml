@@ -1,0 +1,80 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the FranklinWH API
+  version: 1.0.0
+extends: openapi/franklin-whole-home-openapi.yml
+x-provenance:
+  generated: '2026-08-16'
+  method: generated
+  source: openapi/franklin-whole-home-openapi.yml + API Evangelist artifacts in this repo
+actions:
+- target: $.info
+  description: Record the API Evangelist profile and the provenance of the converted contract.
+  update:
+    x-apievangelist-profile: https://apis.io/provider/franklin-whole-home/
+    x-apievangelist-contract-origin: https://api.franklinwh.com/js/apiList-eQeWKe2I.js
+    x-apievangelist-note: FranklinWH publishes an operation catalogue, not an OpenAPI document. This spec is a faithful
+      conversion.
+- target: $.info
+  description: Cross-link the derived semantic artifacts.
+  update:
+    x-apievangelist-artifacts:
+      authentication: authentication/franklin-whole-home-authentication.yml
+      conventions: conventions/franklin-whole-home-conventions.yml
+      errors: errors/franklin-whole-home-problem-types.yml
+      lifecycle: lifecycle/franklin-whole-home-lifecycle.yml
+      data_model: data-model/franklin-whole-home-data-model.yml
+      sandbox: sandbox/franklin-whole-home-sandbox.yml
+      rate_limits: rate-limits/franklin-whole-home-rate-limits.yml
+      agentic_access: agentic-access/franklin-whole-home-agentic-access.yml
+      skills: skills/_index.yml
+- target: $.servers
+  description: Flag that only the test base URL is published by the provider.
+  update:
+  - url: https://test-api.franklinwh.com
+    description: Free test environment - the only base URL FranklinWH publishes publicly.
+    x-environment: test
+    x-production-base-url: issued to authorised partners during onboarding; not published
+- target: $.paths['/api-common/setSwitchParam'].post
+  description: 'Mark physical-consequence control operations: these start or stop a home battery and carry no idempotency
+    key.'
+  update:
+    x-consequence: physical
+    x-idempotent: false
+    x-apievangelist-note: No idempotency key is published for this operation; a retried request repeats the physical
+      action.
+- target: $.paths['/api-common/setGridEvents'].post
+  description: Mark physical-consequence control operations.
+  update:
+    x-consequence: physical
+    x-idempotent: false
+- target: $.paths['/api-common/setSmartCircuits'].post
+  description: 'Mark physical-consequence control operations: smart circuits shed household loads.'
+  update:
+    x-consequence: physical
+    x-idempotent: false
+- target: $.paths['/api-sunrun/setSwitchParam'].post
+  description: Mark physical-consequence control operations.
+  update:
+    x-consequence: physical
+    x-idempotent: false
+- target: $.paths['/api-common/querySiteList'].get
+  description: Record the published pagination contract on list operations.
+  update:
+    x-pagination:
+      style: offset
+      params:
+      - current
+      - pageSize
+      default_page_size: 20
+      max_page_size: 50
+- target: $.paths['/api-sunrun/queryComponents/assets'].get
+  description: Record the published pagination contract on the Sunrun asset listing.
+  update:
+    x-pagination:
+      style: offset
+      params:
+      - next
+      - pageSize
+      default_page_size: 100
+      max_page_size: 1000

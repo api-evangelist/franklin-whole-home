@@ -1,0 +1,48 @@
+generated: '2026-08-16'
+method: generated
+source: openapi/franklin-whole-home-openapi.yml + repo artifacts
+api: openapi/franklin-whole-home-openapi.yml
+skills:
+- file: franklin-whole-home-fleet-inventory.md
+  name: Inventory a FranklinWH fleet
+  description: Authenticate to the FranklinWH partner API and page through every site and device an installer owns.
+  api: openapi/franklin-whole-home-openapi.yml
+  operations:
+  - tokenizer
+  - querySiteList
+  - querySiteInfo
+  - queryDeviceList
+  - queryDeviceParameters
+  - queryDeviceRunningStatus
+- file: franklin-whole-home-energy-telemetry.md
+  name: Pull FranklinWH energy and backup telemetry
+  description: Read power, energy, power-source, telemetry-pool and historical load data for a FranklinWH device,
+    plus its warning and backup-event history.
+  api: openapi/franklin-whole-home-openapi.yml
+  operations:
+  - tokenizer
+  - queryPowerData
+  - getMaxPowerData
+  - queryEnergyData
+  - queryPowerSourceDetails
+  - queryDeviceDataPool
+  - historyDataLoad
+  - queryDeviceHistoricalWarning
+  - queryBackupEvents
+- file: franklin-whole-home-battery-control.md
+  name: Change FranklinWH battery and circuit settings safely
+  description: Apply time-of-use profiles, aPower start/stop, smart-circuit and grid-event settings to a FranklinWH
+    device or group, with the replay and audit precautions this API requires.
+  api: openapi/franklin-whole-home-openapi.yml
+  operations:
+  - tokenizer
+  - queryTouProfile
+  - setTouProfile
+  - queryApowerSwitchStatus
+  - setSwitchParam
+  - querySmartCircuitParameters
+  - setSmartCircuits
+  - queryGridEvents
+  - setGridEvents
+  - setDevicesByGroup
+  - fetchOperationLog

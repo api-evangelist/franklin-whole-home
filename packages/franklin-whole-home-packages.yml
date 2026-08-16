@@ -1,0 +1,47 @@
+generated: '2026-08-16'
+method: searched
+source: npm registry, PyPI, GitHub org github.com/FranklinWH, FranklinWH docs and API portal
+official_sdk_count: 0
+note: FranklinWH publishes NO first-party client libraries. Its GitHub organisation github.com/FranklinWH exists
+  (created 2026-01-29) but has 0 public repositories, no profile name and no description. Every package below is
+  third-party community work built against the FranklinWH surface, recorded here as ecosystem evidence only - none
+  is endorsed or maintained by FranklinWH, so no SDKs pointer is emitted.
+packages:
+- language: python
+  registry: pypi
+  name: franklinwh
+  url: https://pypi.org/project/franklinwh/
+  install: pip install franklinwh
+  official: false
+  version: 2026.3.0
+  published: '2026-03-26'
+  author: Richo Butts
+  repository: https://github.com/richo/franklinwh-python
+  note: Community Python bindings; self-described as "Python bindings to the FranklinWH API, such as it is". Requires
+    an access token and gateway ID.
+- language: javascript
+  registry: npm
+  name: franklinwh
+  url: https://www.npmjs.com/package/franklinwh
+  install: npm install franklinwh
+  official: false
+  version: 1.0.11
+  published: '2025-02-26'
+  author: timjwilkinson
+  repository: null
+  note: Community "FranklinWH API Client". No repository or homepage declared in the registry metadata.
+- language: javascript
+  registry: npm
+  name: '@gravypower/node-red-franklinwh'
+  url: https://www.npmjs.com/package/@gravypower/node-red-franklinwh
+  install: npm install @gravypower/node-red-franklinwh
+  official: false
+  version: 1.0.3
+  published: '2025-07-16'
+  author: gravypower
+  note: Community Node-RED nodes for FranklinWH.
+related_integrations:
+- name: homeassistant-franklinwh
+  url: https://github.com/richo/homeassistant-franklinwh
+  official: false
+  note: Community Home Assistant integration built on the franklinwh PyPI package.

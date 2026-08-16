@@ -1,0 +1,15 @@
+generated: '2026-08-16'
+method: searched
+source: https://www.franklinwh.com/ (sitemap and site probe), https://www.franklinwh.com/blog/introducing-the-franklinwh-api
+plan_count: 0
+plans: []
+note: 'FranklinWH publishes no pricing page of any kind: /pricing returns 404 and no pricing URL appears in https://www.franklinwh.com/sitemap-page.xml.
+  Hardware is sold through certified installers and distributors (https://www.franklinwh.com/get-franklinwh/), who
+  quote per project. The partner API has no published price, plan or quota; access is granted through partner onboarding,
+  and the only cost statement FranklinWH makes is that the test environment is free. An honest zero, not an unchecked
+  field.'
+access_model: partner-onboarding
+free_tier:
+  available: true
+  scope: test environment only
+  url: https://test-api.franklinwh.com

@@ -1,0 +1,34 @@
+generated: '2026-08-16'
+method: probed
+source: live unauthenticated responses from https://test-api.franklinwh.com + openapi/franklin-whole-home-openapi.yml
+format: custom
+envelope:
+  shape: '{"code": <integer>, "msg": "<string>", "data": <payload>}'
+  transport: Application errors are returned with HTTP 200; the code field carries the real result.
+  content_type: not set on error responses observed from the API host
+problems:
+- code: 401
+  http_status: 200
+  title: wrong token
+  detail: The Authorization header was present but the token is invalid or expired.
+  remediation: Re-exchange the cp/ck credential pair at POST /api-common/tokenizer and retry with the new token.
+  observed: GET https://test-api.franklinwh.com/api-common/querySiteList with no Authorization header
+- code: 403
+  http_status: 200
+  title: missing token or token param
+  detail: The request omitted the token, or the token-issuing request omitted cp/ck.
+  remediation: Send the token in the Authorization header; for POST /api-common/tokenizer supply both cp and ck.
+  observed: POST https://test-api.franklinwh.com/api-common/tokenizer with an empty JSON body
+- code: 40004
+  http_status: 404
+  title: resource does not exist
+  detail: Returned by the FranklinWH management host manage-api.franklinwh.com for unknown paths.
+  observed: GET https://manage-api.franklinwh.com/openapi.json
+framework_errors:
+- http_status: 404
+  schema: NotFoundError
+  shape: '{"timestamp","path","status","error","message","requestId"}'
+  note: Spring-style framework 404 emitted by https://test-api.franklinwh.com for paths outside the API namespaces.
+gaps:
+- FranklinWH publishes no error-code reference. Only the codes observed live are recorded here; the catalogue in
+  the API portal documents no error codes at all.

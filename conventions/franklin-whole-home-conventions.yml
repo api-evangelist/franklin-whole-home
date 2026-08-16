@@ -1,0 +1,67 @@
+generated: '2026-08-16'
+method: derived
+source: openapi/franklin-whole-home-openapi.yml + https://api.franklinwh.com/ + live responses from https://test-api.franklinwh.com
+authentication:
+  style: opaque bearer token in a bare Authorization header
+  issuance: POST /api-common/tokenizer with a cp / ck credential pair
+  header: Authorization
+  scheme_prefix: null
+  note: The token is sent as the raw Authorization header value with no Bearer prefix. See authentication/franklin-whole-home-authentication.yml.
+idempotency:
+  supported: false
+  header: null
+  note: No idempotency key appears in any of the 38 published operations. Write operations - setSwitchParam, setTouProfile,
+    setSmartCircuits, setGridEvents, modifySite, setDevicesByGroup - carry no replay protection, which matters because
+    several of them are physical control actions on a home battery. No Idempotency pointer is emitted.
+pagination:
+  style: offset
+  variants:
+  - operations:
+    - querySiteList
+    - fetchOperationLog
+    params:
+    - current
+    - pageSize
+    defaults:
+      current: 1
+      pageSize: 20
+    max_page_size: 50
+  - operations:
+    - queryComponentsAssets
+    params:
+    - next
+    - pageSize
+    defaults:
+      next: 1
+      pageSize: 100
+    max_page_size: 1000
+  response_fields: not published - FranklinWH documents no response payload schemas
+field_expansion:
+  supported: false
+metadata:
+  supported: false
+request_tracing:
+  header: null
+  note: No request-id request header documented. Framework 404 bodies do carry a requestId field.
+versioning:
+  style: namespace prefix only
+  current: '1.0'
+  see: lifecycle/franklin-whole-home-lifecycle.yml
+error_envelope:
+  shape: '{"code": <integer>, "msg": "<string>", "data": <payload>}'
+  http_status: 200 for application errors
+  see: errors/franklin-whole-home-problem-types.yml
+rate_limit_signaling:
+  headers: []
+  note: FranklinWH states rate limiting and anomaly detection are enforced but publishes neither the limits nor
+    any response headers. See rate-limits/franklin-whole-home-rate-limits.yml.
+time_format:
+  note: 'ISO 8601 UTC on the Sunrun backfill window (example published: 2025-01-09T00:00:00Z); Unix epoch seconds
+    on grid-event start/end; "HH:MM" clock strings and "YYYY-MM-DD HH:MM/YYYY-MM-DD HH:MM" ranges on TOU and smart-circuit
+    schedules. Three time encodings across one API.'
+naming:
+  style: RPC verb paths
+  examples:
+  - /api-common/querySiteList
+  - /api-common/setSwitchParam
+  note: Verb-first RPC paths; GET and POST only.

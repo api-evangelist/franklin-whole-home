@@ -1,18 +1,64 @@
 aid: franklin-whole-home
 name: Franklin Whole Home
-description: 'Franklin Whole Home is a company surfaced via the API Evangelist harvest backlog (source:
-  secondary-market) and added to the network as a stub for full-pipeline profiling.'
+description: 'Franklin Whole Home (FranklinWH Energy Storage Inc.) builds whole-home
+  energy management and storage hardware for residential solar: the aPower lithium
+  iron phosphate AC battery, the aGate energy management and controller unit, and the
+  FranklinWH mobile app, together forming an ecosystem that coordinates solar, battery,
+  grid, generator and EV power sources for backup, self-consumption, time-of-use arbitrage
+  and off-grid operation. Founded in 2019 and headquartered in the San Francisco Bay
+  Area, the company designs and manufactures nearly all of its own components and sells
+  through a certified installer and distributor channel. FranklinWH publishes a partner
+  API - a unified developer access platform for authorised third-party owners, financiers,
+  installers and service providers to read device and site data, monitor system performance,
+  receive operational alerts and perform approved remote device control.'
+image: https://www.franklinwh.com/icoLogo1.png
 url: https://raw.githubusercontent.com/api-evangelist/franklin-whole-home/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
 specificationVersion: '0.20'
 created: '2026-08-16'
 modified: '2026-08-16'
 tags:
 - Company
-apis: []
+- Energy
+- Energy Storage
+- Home Energy Management
+- Solar
+- Batteries
+- Internet of Things
+- Smart Home
+- Electric Vehicles
+- Cleantech
+- Device Telemetry
+apis:
+- aid: franklin-whole-home:franklinwh-api
+  name: FranklinWH API
+  description: 'The FranklinWH partner API - a unified developer access platform for
+    authorised partners to connect to FranklinWH systems. Thirty-eight operations across
+    a standard namespace (/api-common/) covering sites, device inventory, device parameters
+    and running status, power/energy/telemetry data, historical warnings and backup
+    events, time-of-use profiles, aPower switch control, smart circuits, grid events,
+    device grouping and a modification audit log; plus a Sunrun-specific namespace
+    (/api-sunrun/). Token authentication: a cp/ck credential pair is exchanged at
+    /api-common/tokenizer for a token sent in the Authorization header.'
+  humanURL: https://api.franklinwh.com/
+  baseURL: https://test-api.franklinwh.com
+  tags:
+  - Energy Storage
+  - Home Energy Management
+  - Device Telemetry
+  - Solar
+  properties:
+  - type: OpenAPI
+    url: openapi/franklin-whole-home-openapi.yml
+  - type: Overlay
+    url: overlays/franklin-whole-home-openapi-overlay.yaml
+  - type: Documentation
+    url: https://api.franklinwh.com/
+  - type: Announcement
+    url: https://www.franklinwh.com/blog/introducing-the-franklinwh-api
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +66,57 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://forgeglobal.com/franklin-whole-home_stock/
+  url: https://www.franklinwh.com/
+- type: DeveloperPortal
+  url: https://api.franklinwh.com/
+- type: APIReference
+  url: https://api.franklinwh.com/
+- type: Blog
+  url: https://www.franklinwh.com/blog/
+- type: Support
+  url: https://www.franklinwh.com/support/contact/
+- type: HelpCenter
+  url: https://www.franklinwh.com/support/articles/faq/
+- type: Documentation
+  url: https://www.franklinwh.com/support/documents/
+- type: SignUp
+  url: https://www.franklinwh.com/apply?role=installer
+- type: TermsOfService
+  url: https://www.franklinwh.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://www.franklinwh.com/policy/
+- type: Authentication
+  url: authentication/franklin-whole-home-authentication.yml
+- type: Conventions
+  url: conventions/franklin-whole-home-conventions.yml
+- type: ErrorCatalog
+  url: errors/franklin-whole-home-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/franklin-whole-home-lifecycle.yml
+- type: Conformance
+  url: conformance/franklin-whole-home-conformance.yml
+- type: DataModel
+  url: data-model/franklin-whole-home-data-model.yml
+- type: Sandbox
+  url: sandbox/franklin-whole-home-sandbox.yml
+- type: Packages
+  url: packages/franklin-whole-home-packages.yml
+- type: MCPServer
+  url: mcp/franklin-whole-home-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/franklin-whole-home-llms.txt
+- type: RateLimits
+  url: rate-limits/franklin-whole-home-rate-limits.yml
+- type: Plans
+  url: plans/franklin-whole-home-plans-pricing.yml
+- type: DomainSecurity
+  url: security/franklin-whole-home-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/franklin-whole-home-agentic-access.yml
+x-enrichment:
+  date: '2026-08-16'
+  status: enriched
+  artifacts_added: 21
+  pass: local-v1

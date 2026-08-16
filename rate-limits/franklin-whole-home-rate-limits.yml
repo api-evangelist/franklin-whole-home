@@ -1,0 +1,33 @@
+generated: '2026-08-16'
+method: searched
+source: https://www.franklinwh.com/blog/introducing-the-franklinwh-api + https://api.franklinwh.com/
+limit_count: 0
+limits: []
+headers: []
+exhaustion_status: null
+note: 'FranklinWH states that the API has "built-in rate limiting and anomaly detection [to] help prevent excessive
+  requests and suspicious access", but publishes no numbers, no windows, no scope and no response headers, and the
+  operation catalogue documents no 429 behaviour. Nothing was observed on unauthenticated probes. An agent integrating
+  this API has no runtime backoff signal to read. Honest zero: limits exist and are undocumented.'
+documented_quotas:
+- kind: page-size
+  operations:
+  - querySiteList
+  - fetchOperationLog
+  limit: 50
+  unit: records per page
+  default: 20
+  source: https://api.franklinwh.com/
+- kind: page-size
+  operations:
+  - queryComponentsAssets
+  limit: 1000
+  unit: records per page
+  default: 100
+  source: https://api.franklinwh.com/
+- kind: schedule
+  operations:
+  - setSmartCircuits
+  limit: 2
+  unit: time periods per circuit
+  source: https://api.franklinwh.com/
