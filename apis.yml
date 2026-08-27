@@ -33,28 +33,170 @@ tags:
 - Cleantech
 - Device Telemetry
 apis:
-- aid: franklin-whole-home:franklinwh-api
-  name: FranklinWH API
-  description: 'The FranklinWH partner API - a unified developer access platform for
-    authorised partners to connect to FranklinWH systems. Thirty-eight operations across
-    a standard namespace (/api-common/) covering sites, device inventory, device parameters
-    and running status, power/energy/telemetry data, historical warnings and backup
-    events, time-of-use profiles, aPower switch control, smart circuits, grid events,
-    device grouping and a modification audit log; plus a Sunrun-specific namespace
-    (/api-sunrun/). Token authentication: a cp/ck credential pair is exchanged at
-    /api-common/tokenizer for a token sent in the Authorization header.'
+- aid: franklin-whole-home:franklin-whole-home-authentication-api
+  name: Franklin Whole Home Authentication API
+  description: Token issuance for the FranklinWH partner API.
   humanURL: https://api.franklinwh.com/
   baseURL: https://test-api.franklinwh.com
   tags:
-  - Energy Storage
-  - Home Energy Management
-  - Device Telemetry
-  - Solar
+  - Authentication
   properties:
   - type: OpenAPI
-    url: openapi/franklin-whole-home-openapi.yml
-  - type: Overlay
-    url: overlays/franklin-whole-home-openapi-overlay.yaml
+    url: openapi/franklin-whole-home-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://api.franklinwh.com/
+  - type: Announcement
+    url: https://www.franklinwh.com/blog/introducing-the-franklinwh-api
+- aid: franklin-whole-home:franklin-whole-home-device-data-api
+  name: Franklin Whole Home Device Data API
+  description: Power, energy, telemetry, inventory and historical load data.
+  humanURL: https://api.franklinwh.com/
+  baseURL: https://test-api.franklinwh.com
+  tags:
+  - Device Data
+  properties:
+  - type: OpenAPI
+    url: openapi/franklin-whole-home-device-data-api-openapi.yml
+  - type: Documentation
+    url: https://api.franklinwh.com/
+  - type: Announcement
+    url: https://www.franklinwh.com/blog/introducing-the-franklinwh-api
+- aid: franklin-whole-home:franklin-whole-home-devices-api
+  name: Franklin Whole Home Devices API
+  description: Device inventory, device information and device parameters.
+  humanURL: https://api.franklinwh.com/
+  baseURL: https://test-api.franklinwh.com
+  tags:
+  - Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/franklin-whole-home-devices-api-openapi.yml
+  - type: Documentation
+    url: https://api.franklinwh.com/
+  - type: Announcement
+    url: https://www.franklinwh.com/blog/introducing-the-franklinwh-api
+- aid: franklin-whole-home:franklin-whole-home-grid-events-api
+  name: Franklin Whole Home Grid Events API
+  description: Grid-event scheduling and query.
+  humanURL: https://api.franklinwh.com/
+  baseURL: https://test-api.franklinwh.com
+  tags:
+  - Grid Events
+  properties:
+  - type: OpenAPI
+    url: openapi/franklin-whole-home-grid-events-api-openapi.yml
+  - type: Documentation
+    url: https://api.franklinwh.com/
+  - type: Announcement
+    url: https://www.franklinwh.com/blog/introducing-the-franklinwh-api
+- aid: franklin-whole-home:franklin-whole-home-groups-api
+  name: Franklin Whole Home Groups API
+  description: Device grouping and bulk settings applied by group.
+  humanURL: https://api.franklinwh.com/
+  baseURL: https://test-api.franklinwh.com
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/franklin-whole-home-groups-api-openapi.yml
+  - type: Documentation
+    url: https://api.franklinwh.com/
+  - type: Announcement
+    url: https://www.franklinwh.com/blog/introducing-the-franklinwh-api
+- aid: franklin-whole-home:franklin-whole-home-modification-records-api
+  name: Franklin Whole Home Modification Records API
+  description: Audit log of setting changes.
+  humanURL: https://api.franklinwh.com/
+  baseURL: https://test-api.franklinwh.com
+  tags:
+  - Modification Records
+  properties:
+  - type: OpenAPI
+    url: openapi/franklin-whole-home-modification-records-api-openapi.yml
+  - type: Documentation
+    url: https://api.franklinwh.com/
+  - type: Announcement
+    url: https://www.franklinwh.com/blog/introducing-the-franklinwh-api
+- aid: franklin-whole-home:franklin-whole-home-sites-api
+  name: Franklin Whole Home Sites API
+  description: Site records — query, list, modify and delete.
+  humanURL: https://api.franklinwh.com/
+  baseURL: https://test-api.franklinwh.com
+  tags:
+  - Sites
+  properties:
+  - type: OpenAPI
+    url: openapi/franklin-whole-home-sites-api-openapi.yml
+  - type: Documentation
+    url: https://api.franklinwh.com/
+  - type: Announcement
+    url: https://www.franklinwh.com/blog/introducing-the-franklinwh-api
+- aid: franklin-whole-home:franklin-whole-home-sunrun-api
+  name: Franklin Whole Home Sunrun API
+  description: Sunrun-specific operations on the /api-sunrun namespace.
+  humanURL: https://api.franklinwh.com/
+  baseURL: https://test-api.franklinwh.com
+  tags:
+  - Sunrun
+  properties:
+  - type: OpenAPI
+    url: openapi/franklin-whole-home-sunrun-api-openapi.yml
+  - type: Documentation
+    url: https://api.franklinwh.com/
+  - type: Announcement
+    url: https://www.franklinwh.com/blog/introducing-the-franklinwh-api
+- aid: franklin-whole-home:franklin-whole-home-sunrun-sites-api
+  name: Franklin Whole Home Sunrun Sites API
+  description: Sunrun site asset inventory.
+  humanURL: https://api.franklinwh.com/
+  baseURL: https://test-api.franklinwh.com
+  tags:
+  - Sunrun Sites
+  properties:
+  - type: OpenAPI
+    url: openapi/franklin-whole-home-sunrun-sites-api-openapi.yml
+  - type: Documentation
+    url: https://api.franklinwh.com/
+  - type: Announcement
+    url: https://www.franklinwh.com/blog/introducing-the-franklinwh-api
+- aid: franklin-whole-home:franklin-whole-home-sunrun-system-setup-api
+  name: Franklin Whole Home Sunrun System Setup API
+  description: Sunrun energy-management and aPower switch control.
+  humanURL: https://api.franklinwh.com/
+  baseURL: https://test-api.franklinwh.com
+  tags:
+  - Sunrun System Setup
+  properties:
+  - type: OpenAPI
+    url: openapi/franklin-whole-home-sunrun-system-setup-api-openapi.yml
+  - type: Documentation
+    url: https://api.franklinwh.com/
+  - type: Announcement
+    url: https://www.franklinwh.com/blog/introducing-the-franklinwh-api
+- aid: franklin-whole-home:franklin-whole-home-system-settings-api
+  name: Franklin Whole Home System Settings API
+  description: Time-of-use profiles, aPower switch control and smart-circuit settings.
+  humanURL: https://api.franklinwh.com/
+  baseURL: https://test-api.franklinwh.com
+  tags:
+  - System Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/franklin-whole-home-system-settings-api-openapi.yml
+  - type: Documentation
+    url: https://api.franklinwh.com/
+  - type: Announcement
+    url: https://www.franklinwh.com/blog/introducing-the-franklinwh-api
+- aid: franklin-whole-home:franklin-whole-home-warnings-and-events-api
+  name: Franklin Whole Home Warnings and Events API
+  description: Historical device warnings and backup (outage) events.
+  humanURL: https://api.franklinwh.com/
+  baseURL: https://test-api.franklinwh.com
+  tags:
+  - Warnings and Events
+  properties:
+  - type: OpenAPI
+    url: openapi/franklin-whole-home-warnings-and-events-api-openapi.yml
   - type: Documentation
     url: https://api.franklinwh.com/
   - type: Announcement
@@ -65,6 +207,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/franklin-whole-home-openapi-overlay.yaml
 - type: Website
   url: https://www.franklinwh.com/
 - type: DeveloperPortal
