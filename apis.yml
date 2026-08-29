@@ -11,6 +11,18 @@ description: 'Franklin Whole Home (FranklinWH Energy Storage Inc.) builds whole-
   API - a unified developer access platform for authorised third-party owners, financiers,
   installers and service providers to read device and site data, monitor system performance,
   receive operational alerts and perform approved remote device control.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.franklinwh.com/icoLogo1.png
 url: https://raw.githubusercontent.com/api-evangelist/franklin-whole-home/refs/heads/main/apis.yml
 x-type: company
