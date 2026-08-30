@@ -1,0 +1,298 @@
+openapi: 3.2.0
+info:
+  title: FranklinWH Groups API
+  version: '1.0'
+  summary: Partner API for the FranklinWH (Franklin Whole Home) residential energy storage platform.
+  description: 'Machine-readable rendering of the FranklinWH partner API as published by FranklinWH''s own API portal at https://api.franklinwh.com/ (portal title `FWH-API-Service`, author `FWH`, version 1.0). The portal ships its complete operation catalogue - paths, HTTP methods, parameter names, locations, types, requirement flags and value notes - as a static, publicly retrievable JavaScript module; this OpenAPI document is a faithful format conversion of that catalogue. Nothing has been added that the portal does not publish. Response payload schemas are NOT published by the portal, so only the observed response envelope is modelled here.
+
+
+    The API covers site and device inventory, telemetry and energy data, warnings and backup events, time-of-use profiles, smart-circuit and grid-event control, aPower battery start/stop, device grouping and an operation audit log, plus a Sunrun-specific namespace (`/api-sunrun/`).
+
+
+    Authentication: POST /api-common/tokenizer with a `cp` / `ck` credential pair returns a token that is sent on every other operation in the `Authorization` header.
+
+
+    Base URL: the only base URL FranklinWH publishes publicly is the free test environment, https://test-api.franklinwh.com. The production base URL is issued to authorised partners during onboarding and is not published.'
+  contact:
+    name: FranklinWH Support
+    email: service@franklinwh.com
+    url: https://www.franklinwh.com/support/contact/
+  x-provenance:
+    method: derived
+    source: https://api.franklinwh.com/js/apiList-eQeWKe2I.js
+    source_portal: https://api.franklinwh.com/
+    derived: '2026-08-16'
+    note: Converted from the FranklinWH API portal's own published operation catalogue. Operations, parameters and request examples are verbatim from that catalogue; no operation, parameter or schema was invented.
+servers:
+- url: https://test-api.franklinwh.com
+  description: Free test environment - the only base URL FranklinWH publishes publicly (portal `host` / `basePath`).
+security:
+- AuthorizationToken: []
+tags:
+- name: Groups
+  description: Device grouping and bulk settings applied by group.
+paths:
+  /api-common/createGroup:
+    post:
+      tags:
+      - Groups
+      summary: Create Groups
+      operationId: createGroup
+      description: Could create groups
+      parameters:
+      - name: groupId
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Group Id. groupId or groupName can not both null
+      - name: groupName
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Group Name. groupId or groupName can not both null
+      - name: groupComment
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Group notes
+      - name: installerId
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Installer Id
+      responses:
+        '200':
+          description: Envelope response. Non-zero `code` values (401 wrong token, 403 missing token or token param) are returned inside the envelope with HTTP 200.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiEnvelope'
+        '404':
+          description: Unknown path.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+  /api-common/modifyGroups:
+    post:
+      tags:
+      - Groups
+      summary: Modify Groups
+      operationId: modifyGroups
+      description: Modify group parameters
+      parameters:
+      - name: groupId
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Group Id. groupId or groupName can not both null
+      - name: orgGroupName
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Origin Group Name. groupId or orgGroupName can not both null
+      - name: groupComment
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Group notes
+      - name: groupNameNew
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Group name
+      - name: installerId
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Installer ID
+      responses:
+        '200':
+          description: Envelope response. Non-zero `code` values (401 wrong token, 403 missing token or token param) are returned inside the envelope with HTTP 200.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiEnvelope'
+        '404':
+          description: Unknown path.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+  /api-common/manageGroupsDevices:
+    post:
+      tags:
+      - Groups
+      summary: Manage Devices in a Group
+      operationId: manageGroupsDevices
+      description: Add or delete devices in a group
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                groupId:
+                  type: integer
+                  description: Group Id. groupId or groupName can not both null
+                groupName:
+                  type: string
+                  description: Group name. groupId or groupName can not both null
+                opt:
+                  type: integer
+                  description: 'Operating type. 1: Add, 2 : delete'
+                deviceIds:
+                  type: array
+                  items:
+                    type: string
+                  description: Device ID list
+              required:
+              - opt
+              - deviceIds
+      responses:
+        '200':
+          description: Envelope response. Non-zero `code` values (401 wrong token, 403 missing token or token param) are returned inside the envelope with HTTP 200.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiEnvelope'
+        '404':
+          description: Unknown path.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+  /api-common/setDevicesByGroup:
+    post:
+      tags:
+      - Groups
+      summary: Set Devices by Group
+      operationId: setDevicesByGroup
+      description: Set devices by group
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                groupId:
+                  type: integer
+                  description: Group Id. groupId or groupName can not both null
+                groupName:
+                  type: string
+                  description: Group name. groupId or groupName can not both null
+                setType:
+                  type: integer
+                  description: 'Setting types. 1: Edit Device Information 2: Set Energy Management Parameters 3: Set TOU parameters 4: Set aPower Switch  5: Set Smart Circuits 6: Set Grid Events  7: Set Grid Package 8: Set Grid Interconnection Compliance'
+                setData:
+                  type: object
+                  description: Same parameters as the settings of single device according to the above setting types (without “device ID”)
+              required:
+              - setType
+              - setData
+      responses:
+        '200':
+          description: Envelope response. Non-zero `code` values (401 wrong token, 403 missing token or token param) are returned inside the envelope with HTTP 200.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiEnvelope'
+        '404':
+          description: Unknown path.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+  /api-common/listGroupDevices:
+    get:
+      tags:
+      - Groups
+      summary: List Group Devices
+      operationId: listGroupDevices
+      description: List Group devices
+      parameters:
+      - name: groupId
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Group Id. groupId or groupName can not both null
+      - name: groupName
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Group name. groupId or groupName can not both null
+      responses:
+        '200':
+          description: Envelope response. Non-zero `code` values (401 wrong token, 403 missing token or token param) are returned inside the envelope with HTTP 200.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiEnvelope'
+        '404':
+          description: Unknown path.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+components:
+  schemas:
+    NotFoundError:
+      type: object
+      description: Framework 404 body returned for unknown paths.
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        path:
+          type: string
+        status:
+          type: integer
+        error:
+          type: string
+        message:
+          type:
+          - string
+          - 'null'
+        requestId:
+          type: string
+      examples:
+      - timestamp: '2026-08-16T17:23:07.914+00:00'
+        path: /
+        status: 404
+        error: Not Found
+        message: null
+        requestId: 1748b892-1427296
+    ApiEnvelope:
+      type: object
+      description: Response envelope used by every operation. Observed live on https://test-api.franklinwh.com.
+      properties:
+        code:
+          type: integer
+          description: Result code. 401 = wrong token, 403 = missing token or token param.
+        msg:
+          type: string
+          description: Human-readable result message.
+        data:
+          description: Operation payload. FranklinWH does not publish payload schemas; shape varies per operation.
+      examples:
+      - code: 401
+        msg: wrong token
+  securitySchemes:
+    AuthorizationToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token returned by POST /api-common/tokenizer (exchange of a `cp` / `ck` credential pair).
