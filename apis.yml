@@ -107,6 +107,8 @@ apis:
   humanURL: https://api.franklinwh.com/
   baseURL: https://test-api.franklinwh.com
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
