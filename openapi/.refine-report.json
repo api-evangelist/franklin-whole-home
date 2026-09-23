@@ -1,0 +1,42 @@
+{
+  "provider": "franklin-whole-home",
+  "sources": [
+    "_original/franklin-whole-home-openapi.yml"
+  ],
+  "outputs": [
+    "franklin-whole-home-authentication-api-openapi.yml",
+    "franklin-whole-home-device-data-api-openapi.yml",
+    "franklin-whole-home-devices-api-openapi.yml",
+    "franklin-whole-home-grid-events-api-openapi.yml",
+    "franklin-whole-home-groups-api-openapi.yml",
+    "franklin-whole-home-modification-records-api-openapi.yml",
+    "franklin-whole-home-sites-api-openapi.yml",
+    "franklin-whole-home-sunrun-api-openapi.yml",
+    "franklin-whole-home-sunrun-sites-api-openapi.yml",
+    "franklin-whole-home-sunrun-system-setup-api-openapi.yml",
+    "franklin-whole-home-system-settings-api-openapi.yml",
+    "franklin-whole-home-warnings-and-events-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "franklin-whole-home-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "franklin-whole-home-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "franklin-whole-home-device-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "franklin-whole-home-devices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "franklin-whole-home-grid-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "franklin-whole-home-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "franklin-whole-home-modification-records-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "franklin-whole-home-sites-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "franklin-whole-home-sunrun-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "franklin-whole-home-sunrun-sites-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "franklin-whole-home-sunrun-system-setup-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "franklin-whole-home-system-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "franklin-whole-home-warnings-and-events-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

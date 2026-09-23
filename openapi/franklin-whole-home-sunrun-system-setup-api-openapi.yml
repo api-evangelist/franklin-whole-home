@@ -3,16 +3,7 @@ info:
   title: FranklinWH Sunrun System Setup API
   version: '1.0'
   summary: Partner API for the FranklinWH (Franklin Whole Home) residential energy storage platform.
-  description: 'Machine-readable rendering of the FranklinWH partner API as published by FranklinWH''s own API portal at https://api.franklinwh.com/ (portal title `FWH-API-Service`, author `FWH`, version 1.0). The portal ships its complete operation catalogue - paths, HTTP methods, parameter names, locations, types, requirement flags and value notes - as a static, publicly retrievable JavaScript module; this OpenAPI document is a faithful format conversion of that catalogue. Nothing has been added that the portal does not publish. Response payload schemas are NOT published by the portal, so only the observed response envelope is modelled here.
-
-
-    The API covers site and device inventory, telemetry and energy data, warnings and backup events, time-of-use profiles, smart-circuit and grid-event control, aPower battery start/stop, device grouping and an operation audit log, plus a Sunrun-specific namespace (`/api-sunrun/`).
-
-
-    Authentication: POST /api-common/tokenizer with a `cp` / `ck` credential pair returns a token that is sent on every other operation in the `Authorization` header.
-
-
-    Base URL: the only base URL FranklinWH publishes publicly is the free test environment, https://test-api.franklinwh.com. The production base URL is issued to authorised partners during onboarding and is not published.'
+  description: Machine-readable rendering of the FranklinWH partner API as published by FranklinWH's own API portal at https://api.franklinwh.com/ (portal title `FWH-API-Service`, author `FWH`, version 1.0).
   contact:
     name: FranklinWH Support
     email: service@franklinwh.com
@@ -127,7 +118,6 @@ paths:
       - Sunrun System Setup
       summary: Set aPower Switch
       operationId: sunrunSetSwitchParam
-      description: Set aPower Switch
       requestBody:
         required: true
         content:
@@ -163,7 +153,6 @@ paths:
       - Sunrun System Setup
       summary: Query aPower Switch Status
       operationId: sunrunQueryApowerSwitchStatus
-      description: Query aPower Switch Status
       parameters:
       - name: siteId
         in: query
