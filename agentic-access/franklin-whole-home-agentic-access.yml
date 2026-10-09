@@ -1,17 +1,22 @@
-generated: '2026-08-16'
+generated: '2026-09-23'
 method: generated
-source: openapi/franklin-whole-home-openapi.yml
+source: openapi/franklin-whole-home-authentication-api-openapi.yml, openapi/franklin-whole-home-device-data-api-openapi.yml,
+  openapi/franklin-whole-home-devices-api-openapi.yml, openapi/franklin-whole-home-grid-events-api-openapi.yml,
+  openapi/franklin-whole-home-groups-api-openapi.yml, openapi/franklin-whole-home-modification-records-api-openapi.yml,
+  openapi/franklin-whole-home-sites-api-openapi.yml, openapi/franklin-whole-home-sunrun-api-openapi.yml,
+  openapi/franklin-whole-home-sunrun-sites-api-openapi.yml, openapi/franklin-whole-home-sunrun-system-setup-api-openapi.yml,
+  openapi/franklin-whole-home-system-settings-api-openapi.yml, openapi/franklin-whole-home-warnings-and-events-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 38
   by_action_class:
-    acting: 19
-    connected: 19
+    acting: 14
+    connected: 24
   by_consequence:
-    write: 19
-    read: 19
+    write: 14
+    read: 24
   human_in_the_loop_required: 0
 operations:
 - path: /api-common/tokenizer
@@ -30,9 +35,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api-common/querySiteInfo
+- path: /api-common/queryPowerData
   method: get
-  operationId: querySiteInfo
+  operationId: queryPowerData
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -40,32 +45,66 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api-common/querySiteList
-  method: get
-  operationId: querySiteList
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api-common/modifySite
+- path: /api-common/getMaxPowerData
   method: post
-  operationId: modifySite
+  operationId: getMaxPowerData
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
+- path: /api-common/queryEnergyData
+  method: post
+  operationId: queryEnergyData
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api-common/queryPowerSourceDetails
+  method: post
+  operationId: queryPowerSourceDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api-common/queryDeviceDataPool
+  method: get
+  operationId: queryDeviceDataPool
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api-common/queryInventory
+  method: get
+  operationId: queryInventory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api-common/historyDataLoad
+  method: get
+  operationId: historyDataLoad
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /api-common/queryDeviceList
   method: get
   operationId: queryDeviceList
@@ -105,192 +144,6 @@ operations:
 - path: /api-common/queryDeviceRunningStatus
   method: get
   operationId: queryDeviceRunningStatus
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api-common/queryPowerData
-  method: get
-  operationId: queryPowerData
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api-common/getMaxPowerData
-  method: post
-  operationId: getMaxPowerData
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api-common/queryEnergyData
-  method: post
-  operationId: queryEnergyData
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api-common/queryPowerSourceDetails
-  method: post
-  operationId: queryPowerSourceDetails
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api-common/queryDeviceDataPool
-  method: get
-  operationId: queryDeviceDataPool
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api-common/queryInventory
-  method: get
-  operationId: queryInventory
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api-common/historyDataLoad
-  method: get
-  operationId: historyDataLoad
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api-common/queryDeviceHistoricalWarning
-  method: get
-  operationId: queryDeviceHistoricalWarning
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api-common/queryBackupEvents
-  method: get
-  operationId: queryBackupEvents
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api-common/setTouProfile
-  method: post
-  operationId: setTouProfile
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api-common/queryTouProfile
-  method: get
-  operationId: queryTouProfile
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api-common/setSwitchParam
-  method: post
-  operationId: setSwitchParam
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api-common/queryApowerSwitchStatus
-  method: get
-  operationId: queryApowerSwitchStatus
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api-common/setSmartCircuits
-  method: post
-  operationId: setSmartCircuits
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api-common/querySmartCircuitParameters
-  method: get
-  operationId: querySmartCircuitParameters
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -408,6 +261,42 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /api-common/querySiteInfo
+  method: get
+  operationId: querySiteInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api-common/querySiteList
+  method: get
+  operationId: querySiteList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api-common/modifySite
+  method: post
+  operationId: modifySite
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /api-sunrun/preCreatedSite
   method: post
   operationId: preCreatedSite
@@ -464,18 +353,12 @@ operations:
   method: post
   operationId: queryEnergyManagParams
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api-sunrun/setSwitchParam
   method: post
   operationId: sunrunSetSwitchParam
@@ -496,6 +379,16 @@ operations:
   method: post
   operationId: sunrunQueryApowerSwitchStatus
   x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api-common/setTouProfile
+  method: post
+  operationId: setTouProfile
+  x-agentic-access:
     action-class: acting
     consequence: write
     subject: required
@@ -508,3 +401,85 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /api-common/queryTouProfile
+  method: get
+  operationId: queryTouProfile
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api-common/setSwitchParam
+  method: post
+  operationId: setSwitchParam
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api-common/queryApowerSwitchStatus
+  method: get
+  operationId: queryApowerSwitchStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api-common/setSmartCircuits
+  method: post
+  operationId: setSmartCircuits
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api-common/querySmartCircuitParameters
+  method: get
+  operationId: querySmartCircuitParameters
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api-common/queryDeviceHistoricalWarning
+  method: get
+  operationId: queryDeviceHistoricalWarning
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api-common/queryBackupEvents
+  method: get
+  operationId: queryBackupEvents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
