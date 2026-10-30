@@ -64,5 +64,132 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Franklin Whole Home is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/franklin-whole-home_stock/
+Franklin Whole Home (FranklinWH Energy Storage Inc.) builds whole-home energy management and storage hardware for residential solar: the aPower lithium iron phosphate AC battery, the aGate energy management and controller unit, and the FranklinWH mobile app, together forming an ecosystem that coordinates solar, battery, grid, generator and EV power sources for backup, self-consumption, time-of-use arbitrage and off-grid operation. Founded in 2019 and headquartered in the San Francisco Bay Area, the company designs and manufactures nearly all of its own components and sells through a certified installer and distributor channel. FranklinWH publishes a partner API - a unified developer access platform for authorised third-party owners, financiers, installers and service providers to read device and site data, monitor system performance, receive operational alerts and perform approved remote device control.
+
+**Areas:** Company · Energy · Energy Storage · Home Energy Management · Solar · Batteries · IoT · Smart Home · Electric Vehicles · Cleantech · Device Telemetry
+
+## Franklin Whole Home on APIs.io
+
+Everything profiled for Franklin Whole Home is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/franklin-whole-home/](https://apis.io/providers/franklin-whole-home/)** — or go straight to one of the APIs or properties below.
+
+### APIs (12)
+
+- [Franklin Whole Home Authentication API](https://apis.io/apis/franklin-whole-home/franklin-whole-home-authentication-api/) — Token issuance for the FranklinWH partner API.
+- [Franklin Whole Home Device Data API](https://apis.io/apis/franklin-whole-home/franklin-whole-home-device-data-api/) — Power, energy, telemetry, inventory and historical load data.
+- [Franklin Whole Home Devices API](https://apis.io/apis/franklin-whole-home/franklin-whole-home-devices-api/) — Device inventory, device information and device parameters.
+- [Franklin Whole Home Grid Events API](https://apis.io/apis/franklin-whole-home/franklin-whole-home-grid-events-api/) — Grid-event scheduling and query.
+- [Franklin Whole Home Groups API](https://apis.io/apis/franklin-whole-home/franklin-whole-home-groups-api/) — Device grouping and bulk settings applied by group.
+- [Franklin Whole Home Modification Records API](https://apis.io/apis/franklin-whole-home/franklin-whole-home-modification-records-api/) — Audit log of setting changes.
+- [Franklin Whole Home Sites API](https://apis.io/apis/franklin-whole-home/franklin-whole-home-sites-api/) — Site records — query, list, modify and delete.
+- [Franklin Whole Home Sunrun API](https://apis.io/apis/franklin-whole-home/franklin-whole-home-sunrun-api/) — Sunrun-specific operations on the /api-sunrun namespace.
+- [Franklin Whole Home Sunrun Sites API](https://apis.io/apis/franklin-whole-home/franklin-whole-home-sunrun-sites-api/) — Sunrun site asset inventory.
+- [Franklin Whole Home Sunrun System Setup API](https://apis.io/apis/franklin-whole-home/franklin-whole-home-sunrun-system-setup-api/) — Sunrun energy-management and aPower switch control.
+- [Franklin Whole Home System Settings API](https://apis.io/apis/franklin-whole-home/franklin-whole-home-system-settings-api/) — Time-of-use profiles, aPower switch control and smart-circuit settings.
+- [Franklin Whole Home Warnings and Events API](https://apis.io/apis/franklin-whole-home/franklin-whole-home-warnings-and-events-api/) — Historical device warnings and backup (outage) events.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [franklinwh](https://apis.io/servers/franklin-whole-home/franklinwh/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Franklin Whole Home Agentic Access](https://apis.io/agentic-access/franklin-whole-home/franklin-whole-home-agentic-access/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Franklin Whole Home Openapi Overlay](https://apis.io/overlays/franklin-whole-home/franklin-whole-home-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Franklin Whole Home Authentication](https://apis.io/security/franklin-whole-home/franklin-whole-home-authentication/)
+- [Franklin Whole Home Domain Security](https://apis.io/security/franklin-whole-home/franklin-whole-home-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Franklin Whole Home Plans Pricing](https://apis.io/plans/franklin-whole-home/franklin-whole-home-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Franklin Whole Home Rate Limits](https://apis.io/rate-limits/franklin-whole-home/franklin-whole-home-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.franklinwh.com/)
+- [Documentation](https://www.franklinwh.com/support/documents/)
+- [API reference](https://api.franklinwh.com/)
+- [Sign up](https://www.franklinwh.com/apply?role=installer)
+- [Support](https://www.franklinwh.com/support/contact/)
+- [Blog](https://www.franklinwh.com/blog/)
+- [Terms of service](https://www.franklinwh.com/terms-of-use/)
+- [Privacy policy](https://www.franklinwh.com/policy/)
+
+## API Evangelist rating
+
+**Kin Score 25.4** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 13.9 |
+| Contract governance | 4.5 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 37.5 |
+| Access clarity | 34.2 |
+
+**Agent readiness 29.0** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.5** — Energy & Utilities
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/franklin-whole-home/](https://apis.io/providers/franklin-whole-home/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Franklin Whole Home: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/franklin-whole-home/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
